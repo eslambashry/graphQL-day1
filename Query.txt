@@ -1,0 +1,198 @@
+#get all users
+query {
+  users {
+    name
+    username
+    email
+    phone
+    website
+    address {
+      city
+      street
+      suite
+      zipcode
+    geo {
+      lat
+      lng
+    }
+    }
+    company{
+    name
+    catchPhrase 
+    bs 
+}
+  }
+}
+
+#get user by id
+query{
+   user(id: 4){
+    name
+    username
+    email
+    address {
+      city
+      street
+      suite
+      zipcode
+    geo {
+      lat
+      lng
+    }
+    }
+    company{
+    name
+    catchPhrase 
+    bs  
+}
+   }
+   }
+
+#get all posts  
+query {
+  posts {
+    userId
+    title
+    body
+  }
+}
+
+#get posts by id
+query {
+  post(id: 9) {
+    userId
+    title
+    body
+  }
+}
+
+#get all  comments
+query {
+  comments {
+    body
+    email
+    name
+    postId
+  }
+}
+#get comments by id  
+query {
+  comment(id: 9)  {
+    body
+    email
+    name
+    postId
+  }
+}
+
+#add new post
+mutation {
+  addPost(post: { userId: 3, title: "New Post", body: "This is a new post." }) {
+    id
+    title
+    body
+  }
+}
+
+#Update post
+mutation {
+  updatePost(id: 3 post: { title: "Updated Title" body: "hellow"}) {
+    id
+    title
+    body
+  }
+}
+
+#delete post
+mutation {
+  deletePost(id: 7) {
+    id
+    title
+  }
+}
+
+#add new comment
+mutation {
+  addComment(comment: {  postId: 3,body: "This is a new comment."  ,name:"eslam" , email:"eslam@gmail.com"}) {
+    id
+    postId
+    body
+    email
+    name
+  }
+}
+
+#Update comment
+mutation {
+  updateComment(id:111,comment: { body: "nice"}) {
+    id
+    postId
+    name
+    email
+    body
+  }
+}
+
+#delete comment
+mutation {
+  deleteComment (id:15){
+    id
+    postId
+    name
+    email
+    body
+  }
+}
+
+#get all user with thair posts
+query {
+  users {
+    name
+    username
+    email
+    phone
+    website
+     posts {
+      id
+      userId
+      title
+      body
+    }
+    address {
+      city
+      street
+      suite
+      zipcode
+    geo {
+      lat
+      lng
+    }
+    }
+    company{
+    name
+    catchPhrase 
+    bs 
+}
+
+  }
+}
+
+#get all posts with thair comments
+query {
+  posts {
+    userId
+    title
+    body
+    comments {
+    postId
+    body
+    email
+    name
+    postId
+  }
+  }
+}
+
+
+
+
